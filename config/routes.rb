@@ -1,10 +1,18 @@
+
 Rails.application.routes.draw do
   # ユーザー登録用のルート
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
   
-  # セッション管理用のルート（タイポ修正 & 重複ルート削除）
-  resources :sessions, only: [:new, :create]
-  resources :chatroom, only: [:new, :create, :show]
+  # セッション管理用のルート
+  resources :sessions, only: [:new, :create, :destroy]
+  
+  resources :chatroom, only: [:new, :create, :show,:index,:update]
+  
+  # ログアウト用のルート
+  delete '/logout', to: 'sessions#destroy'
+  post 'create', to: 'chatroom#create', as: :create
+  
   # ルートパスの設定
   root 'sessions#new'
 end
+
