@@ -1,9 +1,12 @@
 
 class User < ApplicationRecord
   has_many :messages, dependent: :destroy
-  has_secure_password
+  has_many :reactions, dependent: :destroy
 
+  has_secure_password
   mount_uploader :avatar, AvatarUploader
+
+  
   MIN_PASSWORD_LENGTH = 8
   # ユーザー作成時のバリデーション
   validates :username, presence: true, on: :create

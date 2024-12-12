@@ -15,14 +15,17 @@ class ChatroomController < ApplicationController
         @current_user = current_user
     end
       
-    def update
-    end
+    
 
 
     def create
         @message = current_user.messages.build(message_params)
         if @message.save
-          redirect_to new_chatroom_path, notice: 'メッセージが送信されました。'
+            ActionCable.server.broadcast "chat_channel", {
+                username: @message.user.username,
+                avatar_url: @message.user.avatar.url,
+                content: @message.content
+            }
         else
           @messages = Message.includes(:user).order(:created_at)
           render :new, alert: 'メッセージの送信に失敗しました。'

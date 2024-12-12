@@ -1,50 +1,32 @@
+<script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 <h1>チャットルーム</h1>
 <p>こんにちは、<%= @current_user.username %> さん</p>
 
   <%= image_tag current_user.avatar.url, class: "icon" %>
 <div id="messages">
   <% @messages.each do |message| %>
-    <p>
-      <%= image_tag message.user.avatar.url, alt: "#{message.user.username}のプロフィール画像", class: "icon" %>
-      <strong><%= message.user.username %>:</strong>
-      <%= message.content %>
-    </p>
-  <% end %>
+      <div id="message-<%= message.id %>" class="message">
+        <p>
+          <%= image_tag message.user.avatar.url, alt: "#{message.user.username}のプロフィール画像", class: "icon" %>
+          <strong><%= message.user.username %>:</strong>
+          <%= message.content %>
+        </p>
+        <emoji-picker data-message-id="<%= message.id %>"></emoji-picker>
+        <div class="reactions">
+          <% message.reactions.each do |reaction| %>
+            <span data-reaction-id="<%= reaction.id %>"><%= reaction.emoji %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 </div>
 
+
 <div class="text-field">
-  <%= form_with model: @message, url: create_path ,method: :post, local: true do |f| %>
+  <%= form_with model: @message, url: create_path ,method: :post ,local: false do|f| %>
   <div>
     <%= f.text_area :content %>
   </div>
   <%= f.submit '送信' %>
 <% end %>
-</div>
-
-
-
-<div class="err-msg">
-  <!-- エラーメッセージの表示 -->
-  <% if flash[:alert] %>
-    <div class="alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-  <% if flash[:notice] %>
-    <div class="notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-</div>
-
-  <%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true, html: { id: 'avatar-update-form', enctype: 'multipart/form-data' } do |form| %>
-    <div class="field">
-      <%= form.label :avatar, "プロフィール画像を変更" %><br>
-      <%= form.file_field :avatar, required: true %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit "画像を更新" %>
-    </div>
-  <% end %>
 </div>

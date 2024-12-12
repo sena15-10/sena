@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   
   resources :chatroom, only: [:new, :create, :show,:index,:update]
-  
+  resources :messages do
+    resources :reactions, only: [:create]  # reactionsのcreateアクションをPOSTに対応させる
+  end
+  # post 'create' ,to: 'reaction#create' as: :aaa
   # ログアウト用のルート
   delete '/logout', to: 'sessions#destroy'
   post 'create', to: 'chatroom#create', as: :create
-  
   # ルートパスの設定
   root 'sessions#new'
   mount ActionCable.server => '/cable'

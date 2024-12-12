@@ -2,7 +2,7 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("MessageChannel", {
   connected() {
-    // Called when the subscription is ready for use on the server
+    console.log("Connected to room")
   },
 
   disconnected() {
@@ -10,6 +10,19 @@ consumer.subscriptions.create("MessageChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
+    console.log("Received:", data);
+      const chatBox = document.getElementById("messages");
+      const message = document.createElement("p");
+      
+      message.innerHTML = `
+      <img src="${data.avatar_url}" alt="${data.username}のプロフィール画像" class="icon">
+      <strong>${data.username}:</strong> ${data.content}
+    `;
+      chatBox.appendChild(message);
+    },
+    speak(message) {
+      this.perform("speak", { message: message });
+    },
+
+   
 });

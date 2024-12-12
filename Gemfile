@@ -26,3 +26,4 @@ gem 'activestorage', '~> 6.1.7'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'turbolinks', '~> 5'
 gem 'bootstrap'
+gem 'emoji'

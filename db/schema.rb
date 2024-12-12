@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_11_015803) do
+ActiveRecord::Schema.define(version: 2024_12_10_054215) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content", null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2024_11_11_015803) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.integer "message_id", null: false
+    t.string "emoji", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"message_id\", \"user_id\"", name: "index_reactions_on_message_id_and_user_id", unique: true
+    t.index ["message_id"], name: "index_reactions_on_message_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +41,5 @@ ActiveRecord::Schema.define(version: 2024_11_11_015803) do
   end
 
   add_foreign_key "messages", "users"
+  add_foreign_key "reactions", "messages"
 end
