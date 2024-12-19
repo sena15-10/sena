@@ -1,0 +1,65 @@
+
+<div class="background">
+<div class ="close-return" >
+<div onclick="goBack()">
+    <p class="ya">←</p>
+
+    </div>
+    <h1 class ="pro">プロフィール</h1>
+    </div>
+<%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true, html: { id: 'avatar-update-form', enctype: 'multipart/form-data' } do |form| %>
+    <div class="home">
+    <div class="edit-icon-f">
+      <!-- 現在のアバター画像を表示 -->
+      <%= image_tag current_user.avatar.url, class: "edit-icon", id: "current-avatar" %>
+      
+      <!-- カメラアイコンをクリックで画像選択を開く -->
+      <label for="file-input">
+        <%= image_tag "camera.jpeg", alt: "カメラ", class: "camera-icon" %>
+      </label>
+    </div>
+  
+    <div class="file-upload">
+      <!-- ファイル入力フォーム -->
+      <%= form.file_field :avatar, id: "file-input", style: "display: none;" %>
+    </div>
+  </div>
+  
+  <div class="user-name">
+    <p>ユーザー名: <%= @current_user.username %></p>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit "保存", id: "submit-button", class: "save-button" %>
+  </div>
+  
+<% end %>
+</div>
+
+<script>
+function goBack() {
+    window.history.back();  // 前のページに戻る
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fileInput = document.getElementById("file-input"); // ファイル入力
+  const avatarPreview = document.getElementById("current-avatar"); // 現在の画像
+  const submitButton = document.getElementById("submit-button"); // 更新ボタン
+
+  // ファイル入力が変更されたときの処理
+  fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    
+    if (file) {
+      // ファイルのURLを作成してプレビューに表示
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        avatarPreview.src = e.target.result; // プレビューを新しい画像に更新
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
+
+</script>

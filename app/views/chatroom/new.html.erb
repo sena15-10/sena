@@ -1,14 +1,17 @@
 <h1>チャットルーム</h1>
 <p>こんにちは、<%= @current_user.username %> さん</p>
-
-  <%= image_tag current_user.avatar.url, class: "icon" %>
+<%= button_to '画像編集ページへ', edit_chatroom_path(1), method: :get %>
 <div id="messages">
   <% @messages.each do |message| %>
-    <p>
+    <div class="message">
+    <p class="talk-icon">
       <%= image_tag message.user.avatar.url, alt: "#{message.user.username}のプロフィール画像", class: "icon" %>
-      <strong><%= message.user.username %>:</strong>
+    </p>
+
+    <p class="talk"><strong><%= message.user.username %>:</strong>
       <%= message.content %>
     </p>
+    </div>
   <% end %>
 </div>
 
@@ -20,8 +23,6 @@
   <%= f.submit '送信' %>
 <% end %>
 </div>
-
-
 
 <div class="err-msg">
   <!-- エラーメッセージの表示 -->
@@ -37,14 +38,38 @@
   <% end %>
 </div>
 
-  <%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true, html: { id: 'avatar-update-form', enctype: 'multipart/form-data' } do |form| %>
-    <div class="field">
-      <%= form.label :avatar, "プロフィール画像を変更" %><br>
-      <%= form.file_field :avatar, required: true %>
-    </div>
 
-    <div class="actions">
-      <%= form.submit "画像を更新" %>
-    </div>
-  <% end %>
-</div>
+
+<script>
+
+function handleClick()  {
+  const textField = document.querySelector(".edit-icon-field");
+  if (textField) {
+    textField.style.display = "block";
+  }
+}
+
+# document.addEventListener("DOMContentLoaded", function () { 
+#   const icons = document.querySelectorAll(".talk-icon .icon");
+#   const textField = document.querySelector(".edit-icon-field");
+#   const cameraIcon = document.querySelector(".camera-icon");
+
+#   if (avatarIcon) {
+#     avatarIcon.addEventListener("click", function () {
+#         textField.style.display = "block";
+#     });
+#   }
+# });
+
+# document.addEventListener("DOMContentLoaded", function () {
+#   const cameraIcon = document.querySelector(".camera-icon");
+#   const fileInput = document.querySelector("#file-input");
+
+#   if (cameraIcon && fileInput) {
+#     cameraIcon.addEventListener("click", function () {
+#       fileInput.click();
+#     });
+#   }
+# });
+
+</script>
