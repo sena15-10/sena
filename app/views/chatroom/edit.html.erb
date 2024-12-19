@@ -3,8 +3,7 @@
 <div class ="close-return" >
 <div onclick="goBack()">
     <p class="ya">←</p>
-
-    </div>
+</div>
     <h1 class ="pro">プロフィール</h1>
     </div>
 <%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true, html: { id: 'avatar-update-form', enctype: 'multipart/form-data' } do |form| %>
