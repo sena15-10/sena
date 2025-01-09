@@ -1,0 +1,23 @@
+<div class="message-container" id="message-<%= message.id %>">
+  <div class="user_message <%= 'current_user_message' if current_user == message.user %> <%= 'other_user_message' unless current_user == message.user %>">
+    <p class="user_status"><%= image_tag message.user.avatar.url, alt: "#{message.user.username}のプロフィール画像", class: "icon" %></p>
+      <div class="message">
+        <strong class="username"><%= message.user.username %></strong>
+        <% if message.content.start_with?('/assets/') %>
+          <%= image_tag message.content ,class: 'stamp-message'%>
+        <% else %>
+          <p class="message-content"><%= message.content %></p>
+        <% end %>
+        <div class="reactions">
+          <% message.reactions.each do |reaction| %>
+            <span data-reaction-id="<%= reaction.id %>"><%= reaction.emoji %></span>
+          <% end %>
+        </div>
+      </div>
+      <%= image_tag "more_vert.png", class: "more_vert", data: { message_id: message.id } %>
+      <div class="menu" id="menu-<%= message.id %>">
+        <%= render 'menu', message: message %>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+<div class="overlay"></div>
+<header class="header">
+  <div class="header-inner">
+    <p id="room-open">room</p>
+    <div class="gear"><%= image_tag 'gear.png',class:'gear-open'%></div>
+  </div>
+</header>
+
+  <div class="room-modal">
+    <%= image_tag 'close.png' ,class:'room-close-btn' %>
+  </div>
+
+  <div class="gear-modal">
+    <%= image_tag 'close.png' ,class:'gear-close-btn' %>
+    <p><%= link_to "プロフィール", class:"gear-txt" %></p>
+    <p><%= link_to "ログアウト", class:"gear-txt" %></p>
+  </div>
+
+<div id="your-container">
+    <div class="bms-message-container" id="messages">
+      <% @messages.each do |message| %>
+          <%= render 'message', message: message %>
+      <% end %>
+      <div class="bms_send">
+        <button class="bms_stamp_btn">スタンプ</button>
+          <%= form_with model: @message, url: create_path, method: :post, local: false, class: 'new_message' do |f| %>
+            <%= f.text_area :content, class: 'bms_send_message' %>
+            <%= f.submit '送信', class: "bms_send_btn" %>
+        <% end %>
+        </div>
+        <div class="stamp-container">
+         <%= image_tag 'close.png', class:'stamp-close-btn close' %>
+            <div class="stamp-container-inner">
+                <%= render 'stamp', current_user: current_user %>
+            </div>
+        </div>
+    </div>
+</div>
+
+

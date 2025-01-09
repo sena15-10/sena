@@ -1,0 +1,13 @@
+<div class="menu-content">
+  <p class="delete">
+    <%= link_to 'メッセージを削除', delete_message_chatroom_path(message), 
+        method: :delete, 
+        remote: true,
+        class: 'delete-btn',
+        data: { confirm: '本当によろしいですか？' } %>
+  </p>
+  <p class="reaction">リアクション</p>  
+  <div class="emoji">
+    <emoji-picker data-message-id="<%= message.id %>"></emoji-picker>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<h1>Log in</h1>
+<% if flash[:alert] %>
+  <div class="alert-message">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+<%= form_with url: sessions_path, method: :post do |form| %> 
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'ログイン' %>
+  </div>
+  
+  <div>
+    新規登録の方は <%= link_to 'こちら', new_user_path %> をご覧ください。
+  </div>
+<% end %>
+

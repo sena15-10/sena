@@ -1,0 +1,64 @@
+stamps:
+  1:
+    name: 'uhn'
+    url: 'stamps/・・・.jpeg'
+  2:
+    name: 'Help'
+    url: 'stamps/HELP.jpeg'
+  3:
+    name: 'Thank you'
+    url: 'stamps/ありがとうございます.jpeg'
+  4:
+    name: 'nice'
+    url: 'stamps/いいね.jpeg'
+  5:
+    name: 'Yeah yeah'
+    url: 'stamps/うんうん.jpeg'
+  6:
+    name: 'Please'
+    url: 'stamps/お願い.jpeg'
+  7:
+    name: 'As expected'
+    url: 'stamps/さすが.jpeg'
+  8:
+    name: 'feel down'
+    url: 'stamps/ズーン.jpeg'
+  9:
+    name: 'try header'
+    url: 'stamps/そこをなんとか.jpeg'
+  10:
+    name: 'I see'
+    url: 'stamps/なるほど.jpeg'
+  11:
+    name: 'surprised'
+    url: 'stamps/びっくりしてる.jpeg'
+  12:
+    name: 'thats good'
+    url: 'stamps/よかった.jpeg'
+  13:
+    name: 'take care'
+    url: 'stamps/よろしく.jpeg'
+  14:
+    name: 'finish homework'
+    url: 'stamps/課題終わりました.jpeg'
+  15:
+    name: 'surprising'
+    url: 'stamps/驚いてる.jpeg'
+  16:
+    name: 'let me think'
+    url: 'stamps/思考中.jpeg'
+  17:
+    name: 'exuse me'
+    url: 'stamps/失礼します.jpeg'
+  18:
+    name: "I'm sorry"
+    url: 'stamps/申し訳ありません.jpeg'
+  19:
+    name: 'behind schedule'
+    url: 'stamps/進捗ダメです.jpeg'
+  20:
+    name: "I'm okay"
+    url: 'stamps/大丈夫です.jpeg'
+  21:
+    name: 'affirmative'
+    url: 'stamps/了解.jpeg'

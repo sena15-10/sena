@@ -1,0 +1,267 @@
+form, textarea, button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.room-modal {
+    display: none;
+    position: fixed;
+    border-radius: 3px;
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    right: 20%;
+    background-color: rgb(241, 249, 248);
+    z-index: 1000;
+}
+
+.gear-modal {
+    display: none;
+    position: fixed;
+    border-radius: 3px;
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    right: 20%;
+    background-color: rgb(241, 249, 248);
+    z-index: 1000;
+}
+
+.gear-modal a {
+    border-bottom: 2px solid #ccc;
+    font-size: 1.3em;
+    color: rgb(168, 221, 228);
+    margin: 10px;
+}
+
+#your-container {
+    height: 600px;
+}
+
+.bms-message-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 50px); /* 画面全体を占有 */
+    overflow-y:auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+}
+
+.current_user_message .icon{
+    display: none;
+}
+
+.current_user_message {
+    flex-direction: row-reverse;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #a4c3c5;
+}
+
+.current_user_message {
+    display: inline-block;
+    align-self: flex-end;
+    word-wrap: break-word;
+    white-space: normal; /* メッセージを右側に寄せる */
+}
+
+.other_user_message {
+    display: inline-block;
+    align-self: flex-start;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+
+.user_message {
+    max-width: 80%;
+    margin: 25px 0;
+    display: flex;
+}
+
+.user_message:nth-child(1) {
+    margin-top: 60px;
+}
+
+.message{
+    border-radius: 30px 30px 0 30px;
+    min-width: 100px;
+    max-height: max-content;
+    position: relative;
+    font-size: 1.2em;
+    padding: 5px;
+    background-color: #dadada90;
+    border: #ffffff;
+    align-items: center;
+    max-width: 70%; /* メッセージの最大幅を設定 */
+}
+
+.other_user_message .message {
+    border-radius: 30px 30px 30px 0;
+}
+
+.username {
+    font-size: 0.5em;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    white-space: nowrap;
+}
+
+.more_vret {
+    width: min-content;
+    height: auto;
+}
+
+
+
+
+.reactions {
+    position: absolute;
+    display: flex;
+    background-color: #a6a6a6;
+    border-radius: 15px;
+    bottom: -30px;
+}
+
+.reactions span {
+    background-color: #ffffff;
+    font-size: 1.2rem;
+    padding: 2px;
+    margin: 5px 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+
+.reactions span:hover {
+    background-color: #ffffff93;
+
+}
+
+.more_vert {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.more_vert:hover {
+    background-color: #a6a6a65e;
+}
+
+
+/*テキストエリアのcss*/
+.bms_send {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    align-items: center; /* 垂直方向の中央揃え */
+    background-color: rgb(218, 229, 229);
+    border: 1px solid #ddd;
+    color: #ffffff;
+    font-size: 16px;
+    bottom: 0;
+    left: 0;
+}
+
+
+
+.bms_stamp_btn {
+    cursor: pointer;
+    width: 72px;
+    float: left;
+    height: 48px;
+    line-height: 3em;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: #bcbcbc;
+}
+
+.bms_send form {
+    padding: 5px;
+    display: flex;
+    flex: 1;
+}
+.bms_send_message {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 16px;
+    resize: inherit;
+    height: 48px;
+    border: 1px solid #ccc;
+    padding: 14px 6px;
+    border-radius: 4px;
+    box-shadow:2px 2px 4px 0 rgba(0, 0,0,0.2) inset;
+}
+
+.bms_send_btn {
+    line-height: 3em;
+    text-align: center;
+    margin-left: 5px;
+    width: 72px;
+    height: 48px;
+    border-radius: 4px;
+    border: none;
+}
+
+.stamp-container {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(2, 1fr); /* 行数を2に設定 */
+    gap: 10px;
+    position: fixed;
+    height: 350px;
+    width: 100%;
+    background-color: rgba(186, 200, 200, 0.797);
+    z-index: 2;
+    bottom: -350px; /* 高さに合わせて調整 */
+    left: 0;
+    overflow: hidden; /* スライド用にオーバーフローを隠す */
+}
+
+.stamp-container-inner {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr); /* 全体の行数を設定 */
+    gap: 10px;
+    transition: transform 0.5s ease; /* スライドのアニメーション */
+}
+                                                                                                                                                                                                                                                                                                                                                              
+.stamp-container .stamp img  {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.stamp-message {
+    width: 150px;
+    height: 150px;
+}
+.current_user_message .stamp-message{
+    display: inline-block;
+    align-self: flex-end; /* メッセージを右側に寄せる */
+}
+.close {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+   width: 50px;
+   height: 50px;
+}
+
+.close:hover {
+    background-color: #a6a6a65e;
+}

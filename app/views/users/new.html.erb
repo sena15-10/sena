@@ -1,0 +1,43 @@
+<h1>ユーザー登録</h1>
+
+<div class="err-msg req-box">
+    <h1 class="req">パスワードは最低 <%= User::MIN_PASSWORD_LENGTH %> 文字以上でなければなりません。</h1>
+    <h1 class="req">すべての項目は書かないといけません</h1>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> が原因でユーザーの登録に失敗しました:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+</div>
+
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :"ユーザー名" %>
+    <%= form.text_field :username, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :"メールアドレス" %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div class="pass">
+    <%= form.label :"パスワード" %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div class="pass-confirm">
+    <%= form.label :"パスワード確認" %>
+    <%= form.password_field :password_confirmation, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit '登録' %>
+  </div>
+<% end %>
+
