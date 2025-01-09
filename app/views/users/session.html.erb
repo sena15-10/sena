@@ -1,5 +1,5 @@
 <div id="loginModal">
-  <h1 class = "log_in">ログイン</h1>
+  <h1>ログイン</h1>
   <% if flash[:alert] %>
     <div class="alert-message">
       <%= flash[:alert] %>
@@ -12,17 +12,16 @@
       </div>
     
       <div>
-        <%= form.password_field :password, required: true, placeholder: "パスワード", class: "box box1" %>
+        <%= form.label :password %>
+        <%= form.password_field :password, required: true %>
       </div>
-    </div>
     
-    <div class = "center-content">
       <div>
         <%= form.submit 'ログイン' %>
       </div>
       
       <div>
-        パスワードをお忘れの方は <%= link_to 'こちら', users_reset_path %> をご覧ください<br>
+        パスワードをお忘れの方は <%= link_to 'こちら', users_reset_path ,class %> をご覧ください<br>。
         ログアウトの方は<%= link_to 'こちら', logout_path %>をクリック
       </div>
     </div>

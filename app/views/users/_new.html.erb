@@ -1,0 +1,40 @@
+
+<div class="registerModal">
+  <div class="err-msg req-box">
+    <%= form_with(model: @user, local: true) do |form| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> が原因でユーザーの登録に失敗しました:</h2>
+          <ul>
+           <% @user.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+           <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class = "new_registration">
+        <h1 class = "new_label">新規登録</h1>
+        <div class = "user_name">
+          <%= form.text_field :username, required: true, placeholder: "ユーザー名", class: "box box1"%>
+        </div>
+      
+        <div class = "mailadrress">
+          <%= form.email_field :email, required: true, placeholder: "メールアドレスを入力", class: "box box1" %>
+        </div>
+      
+        <div class="pass">
+          <%= form.password_field :password, required: true, placeholder: "パスワード", class: "box box1" %>
+        </div>
+      
+        <div class="pass-confirm">
+          <%= form.password_field :password_confirmation, required: true, placeholder: "パスワード確認", class: "box box1" %>
+        </div>
+      
+        <div class ="center-content">
+          <%= form.submit '登録' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

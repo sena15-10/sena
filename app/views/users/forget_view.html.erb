@@ -1,0 +1,26 @@
+
+
+
+
+<h1 class = "reset">パスワード再設定</h1>
+
+
+
+<%= form_with url: users_reset_path ,method: :post  do |form| %>
+  
+  <div class = "new_entry">
+    <div>
+      <%= form.email_field :email, required: true, placeholder: "メールアドレスを入力", class: "box box1" %>
+    </div>
+    <div class="pass">
+      <%= form.password_field :password, required: true, placeholder: "パスワードを入力", class: "box box1", minlength: 8, id: 'password-field'  %>
+    </div>
+    <div class="pass-confirm">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "パスワードを入力", class: "box box1", minlength: 8 %>
+    </div>
+  </div>
+
+  <div class="center-content">
+    <%= form.submit '再登録', class: 'btn btn-primary' %>
+  </div>
+<% end %>  

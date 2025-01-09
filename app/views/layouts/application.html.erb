@@ -2,14 +2,23 @@
 <html>
   <head>
     <title>ChatApplication</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <%= favicon_link_tag 'kirakira.jpeg' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-  </head>
-
-  <body>
+     <meta name="viewport" content="width=device-width,initial-scale=1">
+     <%= stylesheet_link_tag 'application', media: 'all' %>
+     </head>
+     
+     <body>
+     <%= javascript_include_tag 'application.js' %>
+  
     <%= yield %>
   </body>
 </html>

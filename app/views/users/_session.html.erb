@@ -1,0 +1,30 @@
+
+<h1 class = "log_in">ログイン</h1>
+<% if flash[:alert] %>
+  <div class="alert-message">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+<%= form_with url: sessions_path, method: :post do |form| %> 
+  <div class = entry>
+    <div>
+      <%= form.email_field :email, required: true, placeholder: "メールアドレス", class: "box box1" %>
+    </div>
+  
+    <div>
+      <%= form.password_field :password, required: true, placeholder: "パスワード", class: "box box1" %>
+    </div>
+    
+  </div>
+  
+  <div class = "center-content">
+    <div>
+      <%= form.submit 'ログイン' %>
+    </div>
+    
+    <div>
+      パスワードをお忘れの方は <%= link_to 'こちら', users_reset_path %> をご覧ください<br>
+      ログアウトの方は<%= link_to  'こちら', logout_path  %>をクリック
+    </div>
+  </div>
+<% end %>

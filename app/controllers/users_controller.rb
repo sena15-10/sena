@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def main
+    @user = User.new
+  end
+
 
   def index
     @users = User.all
@@ -19,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'ユーザーが正常に作成されました。'
       redirect_to root_path
     else
-      render :new
+      render :_new
     end
   end
 
@@ -50,11 +54,38 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  private
+  def forget_view
+  end
+
+  # パスワード再設定
+  def reset
+    @user = User.find_by(email: params[:email])
+    puts "データベース内のユーザー：#{@user}"
+    if @user == nil
+      flash.now[:alert] = "Emailが間違っています"
+      render :forget_view
+     elsif @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+      flash[:notice] = "パスワードが正常にリセットされました。新しいパスワードでログインしてください。"
+      puts "aiueo"
+      redirect_to root_path
+     else
+      flash[:alert] = "パスワードのリセットに失敗しました。入力内容を確認してください。"
+      render :forget_view_path
+    end
+    # if @user && @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+    #   redirect_to root_path, notice: "Password was successfully reset. Please log in with your new password."
+    # else
+      # flash.now[:alert] = @user.errors
+      # render :forget_view
+    # end
+  end
 
   def set_user
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
+
+  private
+
 
   # 自分自身のみが編集・更新・削除できるように制限
   def require_correct_user

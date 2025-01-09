@@ -9,4 +9,16 @@ class ApplicationController < ActionController::Base
         # ユーザーがログインしているかどうかを判定
         !!current_user #これはユーザーがログインしている真偽値で返すメソッド
     end
+
+    after_action :clear_flash
+
+    private
+
+    def clear_flash
+       flash.clear if request.xhr?
+    end
+
+    def new
+        @user = User.new
+    end
 end
