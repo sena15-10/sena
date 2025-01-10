@@ -1,4 +1,6 @@
+import $ from 'jquery';
 import { easing } from "jquery";
+
 
 console.log("custom")
 $(function () {
@@ -78,7 +80,7 @@ $(function () {
                 <strong class="username">${data.username}</strong>
                 <p class="message-content"><img src="${data.stamp_url}" class="stamp-message"></p>
               </div>
-              <img src="/assets/images/more_vert.png" class="more_vert" data-message-id="${data.message_id}">
+              <img src="/assets/more_vert.png" class="more_vert" data-message-id="${data.message_id}">
               <div class="menu" id="menu-${data.message_id}">
                 <div class="menu-content">
                   <p class="delete">

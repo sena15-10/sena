@@ -1,5 +1,6 @@
 class ChatroomController < ApplicationController
   before_action :require_login
+  skip_before_action :verify_authenticity_token, only: [:send_stamp]
 
   def index
     @messages = Message.includes(:user).order(:created_at)

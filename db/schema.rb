@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2024_12_25_050519) do
     t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "stamp_id"
+    t.string "stamp_url"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
