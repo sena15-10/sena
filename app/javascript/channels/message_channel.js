@@ -27,9 +27,17 @@ consumer.subscriptions.create("MessageChannel", {
 
           </div>
         </div>
-        <img src="/assets/images/more_vert.png" class="more_vert">
-        <div class="menu" id="menu-${data.id}">
-          <!-- メニューの内容をここに追加 -->
+        <img src="/assets/more_vert.png" class="more_vert" data-message-id="${data.message_id}">
+        <div class="menu" id="menu-${data.message_id}">
+          <div class="menu-content">
+            <p class="delete">
+              <a href="/chatroom/${data.message_id}/delete_message" data-method="delete" data-remote="true" class="delete-btn" data-confirm="本当によろしいですか？">メッセージを削除</a>
+            </p>
+            <p class="reaction">リアクション</p>  
+              <div class="emoji">
+                <emoji-picker data-message-id="${data.message_id}"></emoji-picker>
+              </div>
+          </div>
         </div>
       `;
       chatBox.appendChild(message);

@@ -17,14 +17,15 @@ $(function () {
     });
 
     //プロフィール画面遷移やログアウトの表示
-    $('.gear,.gear-close-btn').on('click', function () {
-      console.log("gear")
+    $('.gear,.gear-close-btn').on('click', function (e) {
+      console.log("gear" + "開く？？")
+      e.preventDefault();
       $('.gear-modal').toggleClass('open');
       if($('.gear-modal').hasClass('open')){
-        $('.gear-modal').css('display', 'block');
+        $('.gear-modal').css('display', 'flex');
         $('.overlay').css('display', 'block');
       } else {
-        $('.gear-modal').css('display', 'none');
+        $('.gear-modal').css('display','none' );
         $('.overlay').css('display', 'none');
       }
     });
@@ -71,29 +72,33 @@ $(function () {
             const messageContainer = $('#messages'); // メッセージコンテナの指定を修正
             const message = document.createElement('div');
             message.id = `message-${data.message_id}`;
-            message.className = `user_message ${data.current_user ? 'current_user_message' : 'other_user_message'}`;
-            message.innerHTML = `
-              <p class="user_status">
-                <img src="${data.avatar_url}" alt="${data.username}のプロフィール画像" class="icon">
-              </p>
-              <div class="message">
-                <strong class="username">${data.username}</strong>
-                <p class="message-content"><img src="${data.stamp_url}" class="stamp-message"></p>
-              </div>
-              <img src="/assets/more_vert.png" class="more_vert" data-message-id="${data.message_id}">
-              <div class="menu" id="menu-${data.message_id}">
-                <div class="menu-content">
-                  <p class="delete">
-                    <a href="/chatroom/${data.message_id}/delete_message" data-method="delete" data-remote="true" class="delete-btn" data-confirm="本当によろしいですか？">メッセージを削除</a>
-                  </p>
-                  <p class="reaction">リアクション</p>  
-                  <div class="emoji">
-                    <emoji-picker data-message-id="${data.message_id}"></emoji-picker>
+            const messageClass = data.current_user ? 'current_user_message' : 'other_user_message';
+            console.log(messageClass)
+            const messageHTML = `
+              <div class="user_message ${messageClass}">
+                <p class="user_status">
+                  <img src="${data.avatar_url}" alt="${data.username}のプロフィール画像" class="icon">
+                </p>
+                <div class="message">
+                  <strong class="username">${data.username}</strong>
+                  <p class="message-content"><img src="${data.stamp_url}" class="stamp-message"></p>
+                </div>
+                <img src="/assets/more_vert.png" class="more_vert" data-message-id="${data.message_id}">
+                <div class="menu" id="menu-${data.message_id}">
+                  <div class="menu-content">
+                    <p class="delete">
+                      <a href="/chatroom/${data.message_id}/delete_message" data-method="delete" data-remote="true" class="delete-btn" data-confirm="本当によろしいですか？">メッセージを削除</a>
+                    </p>
+                    <p class="reaction">リアクション</p>  
+                    <div class="emoji">
+                      <emoji-picker data-message-id="${data.message_id}"></emoji-picker>
+                    </div>
                   </div>
                 </div>
               </div>
             `;
-            messageContainer.append(message);
+            
+            messageContainer.append(messageHTML);
             close_stamp(event);
           } else {
             console.log("スタンプ送信エラー:", data.errors);

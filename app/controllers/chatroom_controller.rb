@@ -10,6 +10,7 @@ class ChatroomController < ApplicationController
   def new
     @messages = Message.includes(:user).order(:created_at)
     @message = Message.new
+    @users = User.all
   end
 
   def show

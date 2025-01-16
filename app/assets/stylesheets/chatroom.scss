@@ -1,3 +1,4 @@
+
 form, textarea, button {
     margin: 0;
     padding: 0;
@@ -8,7 +9,7 @@ form, textarea, button {
 a {
     text-decoration: none;
 }
-
+/*ルームユーザーの表示*/
 .room-modal {
     display: none;
     position: fixed;
@@ -21,6 +22,14 @@ a {
     z-index: 1000;
 }
 
+.room-user {
+    text-align: center;
+    background: linear-gradient(50deg, #ffffff, #beb7b5);
+    background-repeat: repeat-x;
+    font-size: 1.3em;
+    color: #3c3c3c;
+}
+
 .gear-modal {
     display: none;
     position: fixed;
@@ -30,8 +39,20 @@ a {
     top: 10%;
     right: 20%;
     background-color: rgb(241, 249, 248);
-    z-index: 1000;
+    z-index: 10000;
 }
+.gear-modal .avater {
+    margin: 50px 10px;
+    width: 40%;
+    height: 80%;
+}
+
+.gear-modal #current-avatar {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
 
 .gear-modal a {
     border-bottom: 2px solid #ccc;
@@ -72,7 +93,6 @@ a {
 
 .current_user_message {
     display: inline-block;
-    align-self: flex-end;
     word-wrap: break-word;
     white-space: normal; /* メッセージを右側に寄せる */
 }
@@ -86,7 +106,7 @@ a {
 
 
 .user_message {
-    max-width: 80%;
+    max-width: 95%;
     margin: 25px 0;
     display: flex;
 }
@@ -265,3 +285,118 @@ a {
 .close:hover {
     background-color: #a6a6a65e;
 }
+
+/*アイコン編集用のcss*/
+
+body {
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+}
+
+.background {
+ width: 80%;
+ margin: 0 auto;
+ background: #DAE5E5;
+ padding: 20px;
+ border-radius: 8px;
+ text-align: center;
+}
+
+.icon {
+   width: 100px;
+   height: 100px;
+   margin-right:10px;
+   object-fit: cover;
+   object-position: center;
+   border-radius: 50%;
+   border: solid 1px rgb(118, 118, 118);
+ }
+
+ .close-return {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ }
+
+ .edit-icon-field {
+   display: none;
+   max-width: 700px;
+   height: 500px;
+   border: 1px solid #000000;
+ }
+
+ .pro {
+   display: inline-block;
+   margin: 10px auto;
+   padding: 30px 20px;
+   color: #8DC4CB;
+   font-weight: 900;
+ }
+
+ .edit-icon {
+   width: 200px;
+   height: 200px;
+ }
+ 
+ .home {
+   background-color:#A8E8E8;
+   border-radius: 30px;
+   height: 55vh;
+   display: flex;
+   justify-content: center;
+   align-items: center; 
+ }
+
+ .edit-icon-f {
+   position: relative;
+   margin: 0 auto;
+   display:inline-block;
+ }
+
+ .edit-icon {
+   width: 200px;
+   height: 200px;
+   border-radius: 50%;
+   object-fit: cover;
+   overflow: hidden;
+   }
+   
+ .ya {
+       font-size: 50px;
+       color:#8DC4CB;
+     }
+
+ .camera-icon {
+   width: 60px;
+   position: absolute;
+   bottom: 150px;
+   left: 150px;
+   }
+
+ .camera-icon:hover {
+   transform: scale(1.1);
+   transition: transform 0.3s ease;
+ }
+
+ .user-name {
+   font-size: 1.2em;
+   width:50%;
+   display: inline-block;
+   text-align: center;
+   margin: 30px 0;
+   padding: 10px 0;
+   color:#8DC4CB;
+   border-top: 1.5px solid #8DC4CB;
+   border-bottom: 1.5px solid #8DC4CB;
+ }
+
+ .save-button {
+   background-color: #8DC4CB;
+   color: white;
+   border: none;
+   border-radius: 8px;
+   padding: 10px 20px;
+   font-size: 16px;
+   font-family: 'Kaisei Opti', serif;
+ }
+ 

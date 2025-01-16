@@ -1,0 +1,36 @@
+
+<div class="background">
+<div class ="close-return" >
+<div onclick="goBack()">
+    <p class="ya">←</p>
+</div>
+    <h1 class ="pro">プロフィール</h1>
+    </div>
+<%= form_with model: @current_user, url: user_path(@current_user), method: :patch, local: true, html: { id: 'avatar-update-form', enctype: 'multipart/form-data' } do |form| %>
+    <div class="home">
+    <div class="edit-icon-f">
+      <!-- 現在のアバター画像を表示 -->
+      <%= image_tag current_user.avatar.url, class: "edit-icon", id: "current-avatar" %>
+      
+      <!-- カメラアイコンをクリックで画像選択を開く -->
+      <label for="file-input">
+        <%= image_tag "camera.png", alt: "カメラ", class: "camera-icon" %>
+      </label>
+    </div>
+  
+    <div class="file-upload">
+      <!-- ファイル入力フォーム -->
+      <%= form.file_field :avatar, id: "file-input", style: "display: none;" %>
+    </div>
+  </div>
+  
+  <div class="user-name">
+    <p>ユーザー名: <%= @current_user.username %></p>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit "保存", id: "submit-button", class: "save-button" %>
+  </div>
+  
+<% end %>
+</div>

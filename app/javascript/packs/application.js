@@ -78,3 +78,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 });
+
+function goBack() {
+  window.history.back();  // 前のページに戻る
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+const fileInput = document.getElementById("file-input"); // ファイル入力
+const avatarPreview = document.getElementById("current-avatar"); // 現在の画像
+const submitButton = document.getElementById("submit-button"); // 更新ボタン
+
+// ファイル入力が変更されたときの処理
+fileInput.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  
+  if (file) {
+    // ファイルのURLを作成してプレビューに表示
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      avatarPreview.src = e.target.result; // プレビューを新しい画像に更新
+    };
+    reader.readAsDataURL(file);
+  }
+});
+});
