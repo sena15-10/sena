@@ -19,14 +19,14 @@ Rails.application.routes.draw do
   end 
   #スタンプ情報を受信するためのルート
   post 'chatroom/send_stamp', to: 'chatroom#send_stamp'
-  # post 'create' ,to: 'reaction#create' as: :aaa
+  
   # ログアウト用のルート
   delete '/logout', to: 'sessions#destroy'
   patch '/delete', to: 'chatroom#destroy', as: :delete
   post 'create', to: 'chatroom#create', as: :create
   post 'messages/:message_id/stamps', to: 'chatroom#send_stamp'
   # ルートパスの設定
-  root 'sessions#new'
+  root 'users#main'
   mount ActionCable.server => '/cable'
 end
 

@@ -80,3 +80,188 @@ header {
 .menu.open {
     display: block;
 }
+
+body,h1,p {
+    margin: 0;
+  }
+  body {
+    font-family: "Kaisei Opti", serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .p1,.p2 {
+    font-size: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-items: center;
+    max-width: 100vh;
+    max-height: 100vh;
+  }
+  
+  .youkoso img {
+    width: 30rem;
+    height: auto;
+  }
+  
+  .welocome {
+    color: #A8E8E8;
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 0.3em;
+  }
+  
+  .text {
+    padding-top: 150px;
+    padding-left: 30px;
+  }
+  
+  p {
+    color:  #8DC4CB;
+    padding: 17px 250px;
+    margin: 3%;
+    white-space: nowrap;
+    border-radius: 20px;
+    letter-spacing: 0.2em;
+  }
+  .p1 {
+    background-color: #A8E8E8;
+  }
+  .p2 {
+    background-color: #DAE5E5;
+  }
+  
+  p.submit {
+    text-align: center;
+  }
+  
+  .box {
+    margin: 15px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    background: #DAE5E5;
+    padding-left: 7%;
+    border: none;
+    height: 2.4em;
+    width: 90%;
+  }
+  .box:focus {
+    outline:solid 2px #8DC4CB;
+  }
+  
+  input[type="submit"] {
+    padding: 20px 100px;
+    background: #DAE5E5;
+    font-size: 1em;
+    color: #8DC4CB;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px -6px rgba(0, 0, 0, 0.15);
+  }
+  input[type="submit"]:hover {
+    opacity: 0.8;
+  }
+  
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left:100px;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+  .modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    border-radius: 10px;
+  }
+  
+  .close .register {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover .close:focus
+  .register:hover .register:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .additional-links {
+    margin-top: 15px;
+  }
+  
+  
+  
+  /* 新規登録*/
+  .new_registration {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 5%;
+  }
+  .new_label {
+    color: #A8E8E8;
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 0.3em;
+    margin: 30px;
+  }
+
+  .new_registration.div{
+      display: block;
+      margin-top: 0em;
+      unicode-bidi: isolate;
+  }
+  
+  
+  
+  /* ログイン */
+  .log_in{
+    color: #A8E8E8;
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 0.3em;
+  }
+  .entry{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 5%;
+  }
+  
+  
+  /*再登録*/
+  .reset{
+    color: #A8E8E8;
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 0.3em;
+  }
+  
+  .new_entry{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 5%;
+  }

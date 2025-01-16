@@ -11,7 +11,17 @@ class SessionsController < ApplicationController
             redirect_to new_chatroom_url #ログイン後のページをredirect_toの後に書く
         else 
             flash.now[:alert] = "メールアドレスまたはパスワードが正しくありません"
-            render :new  #失敗したら同じページをロード
+            render :_new  #失敗したら同じページをロード
         end 
     end 
+
+
+    def main
+        @user = User.new
+    end
+    def destroy
+        redirect_to root_url
+        session[:user_id] = nil
+        flash[:notice] = "ログアウトしました"
+    end
 end

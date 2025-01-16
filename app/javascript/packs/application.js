@@ -45,3 +45,36 @@ function updateReactionDisplay(messageId, reaction) {
   reactionElement.dataset.reactionId = reaction.id;
   reactionContainer.appendChild(reactionElement);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+  const loginModal = document.getElementById("loginModal");
+  const registerModal = document.getElementById("registerModal");
+  const allCloseBtns = document.querySelectorAll(".close");
+
+  loginBtn.onclick = function() {
+    loginModal.style.display = "block";
+    console.log("Login modal opened");
+  };
+
+  registerBtn.onclick = function() {
+    registerModal.style.display = "block";
+  };
+
+  allCloseBtns.forEach(function(btn) {
+      btn.onclick = function() {
+        loginModal.style.display = "none";
+        registerModal.style.display = "none";
+        console.log("Modal closed");
+      };
+  });
+
+  window.onclick = function(event) {
+    if (event.target == loginModal || event.target == registerModal) {
+      loginModal.style.display = "none";
+      registerModal.style.display = "none";
+      console.log("Modal closed");
+    }
+  };
+});
