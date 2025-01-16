@@ -13,7 +13,6 @@ gem 'sass-rails', '>= 6'
 # Use Active Model has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 2.0'
-
  gem 'webpacker', '~> 5.0'
 group :development do
 end
@@ -22,5 +21,4 @@ gem 'activestorage', '~> 6.1.7'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'turbolinks', '~> 5'
 gem 'bootstrap'
-gem 'pry-byebug'
 gem 'emoji'
